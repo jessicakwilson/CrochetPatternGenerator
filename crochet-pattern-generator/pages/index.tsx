@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useState } from 'react';
-// import styles from '@/styles/Home.module.css'
+import styles from '@/styles/Home.module.css'
 
 const defaultSwatchStitches = 16;
 const defaultSwatchRows = 10;
@@ -25,8 +25,11 @@ export default function Home() {
     let sts = Math.ceil(stPerIn * parseInt(height));
     let rows = Math.ceil(rowPerIn * parseInt(circumference));
 
-    setPatternText("You need to crochet a rectangle that is " + sts + " stitches wide and " + rows + " rows tall. Then you sew together the small sides and cinch the long side to form a beanie.");
-  }
+    setPatternText("R0: ch " + (sts+2) + 
+      ".\nR1: in the third ch from the hook, hdc. Do " + (sts-1) + " more hdc across the row. ch 2 & turn. [" + sts + 
+      "]\nR2-" + (rows-1) + ": " + sts + " hdc. ch 2 & turn. [" + sts + "]" +
+      "\nR" + rows + ": " + sts + " hdc. Cut yarn & tie off. [" + sts + "]");
+ }
 
   return (
     <>
@@ -38,6 +41,7 @@ export default function Home() {
       </Head>
       <main>
       <h1>Crochet Beanie Pattern Generator</h1>
+      <p>Crochet a gauge swatch in hdc blo.</p>
         <div>
           <form onSubmit={generateButtonClick}>
             <div>
@@ -79,9 +83,16 @@ export default function Home() {
 
             <button>Generate</button>
           </form>
-          
+          <h2>Abbreviations: </h2>
+          <p>ch: chain</p>
+          <p>hdc: half double crochet</p>
+
           <h2>Pattern: </h2>
-           <p>{patternText}</p>   
+            <div className={styles.pattern}>
+              <p>{patternText}</p>
+            </div>
+          <h2>Assembly: </h2>
+          <p>Seam together the small sides to form a cylinder. Cinch one of the long sides together until it is closed enough to form the top of the hat.</p>
         </div>
       </main>
     </>
