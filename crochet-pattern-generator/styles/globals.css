@@ -1,0 +1,11 @@
+:root {
+  --lt-purple: #d1d0ed;
+  --med-purple: #8c8bd3;
+  --logo-color: #6666cc;
+  --dk-purple: #5353a6;
+}
+
+
+body {
+    background-color: var(--lt-purple);
+}
